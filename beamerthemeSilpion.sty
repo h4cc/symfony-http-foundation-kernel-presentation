@@ -1,0 +1,128 @@
+
+\mode<presentation>
+
+\newif\ifbeamer@secheader
+\beamer@secheaderfalse
+
+\DeclareOptionBeamer{secheader}{\beamer@secheadertrue}
+\ProcessOptionsBeamer
+
+
+% START COLORTHEME
+%\definecolor{silpion}{RGB}{186,214,102} % #BAD666
+\definecolor{silpion}{RGB}{182,188,0} % #B6BC00 Laut neuem Styleguide
+\definecolor{Gray}{gray}{0.85}
+
+
+%\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
+%\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!75!black}
+%\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg!75!black}
+\setbeamercolor{block title}{use=structure,fg=white,bg=silpion}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!75!black}
+\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg!75!black}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+
+%\setbeamercolor*{palette primary}{use=structure,fg=white,bg=structure.fg}
+%\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=structure.fg!75!black}
+%\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=structure.fg!50!black}
+%\setbeamercolor*{palette quaternary}{fg=white,bg=black}
+\setbeamercolor*{palette primary}{use=structure,fg=white,bg=silpion}
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=silpion!90!black}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=silpion}
+\setbeamercolor*{palette quaternary}{fg=white,bg=black}
+
+\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
+
+\setbeamercolor*{palette sidebar primary}{use=structure,fg=structure.fg!10}
+\setbeamercolor*{palette sidebar secondary}{fg=white}
+\setbeamercolor*{palette sidebar tertiary}{use=structure,fg=structure.fg!50}
+\setbeamercolor*{palette sidebar quaternary}{fg=white}
+
+\setbeamercolor*{titlelike}{parent=palette primary}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\setbeamercolor*{item}{fg=silpion}
+\setbeamercolor{itemize item}{fg=silpion}
+% END COLORTHEME
+
+% START INNERTHEME
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{sections/subsections in toc}[ball]
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=true]
+\setbeamertemplate{part page}[default][colsep=-4bp,rounded=true,shadow=true]
+% STOP INNERTHEME
+
+
+% START OUTERTHEME
+\setbeamercolor*{author in head/foot}{parent=palette tertiary}
+\setbeamercolor*{title in head/foot}{parent=palette secondary}
+\setbeamercolor*{date in head/foot}{parent=palette primary}
+
+\setbeamercolor*{section in head/foot}{parent=palette tertiary}
+\setbeamercolor*{subsection in head/foot}{parent=palette primary}
+
+\defbeamertemplate*{footline}{silpion theme}
+{
+  \leavevmode%
+  \hbox{%
+
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.1ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{title in head/foot}Symfony2 for Beginners
+  \end{beamercolorbox}%
+
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.1ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{author in head/foot}Julius Beckmann - @h4cc
+  \end{beamercolorbox}%
+
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.1ex,dp=1ex,center]{date in head/foot}%
+    \usebeamerfont{date in head/foot}Silpion IT-Solutions
+  \end{beamercolorbox}
+    }%
+
+  \vskip0pt%
+}
+
+\defbeamertemplate*{headline}{silpion theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.5ex,right]{section in head/foot}%
+    \usebeamerfont{section in head/foot}\insertsectionhead\hspace*{2ex}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.5ex,left]{subsection in head/foot}%
+    \usebeamerfont{subsection in head/foot}\hspace*{2ex}\insertsubsectionhead
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\setbeamersize{text margin left=1em,text margin right=1em}
+% START INNERTHEME
+
+\hypersetup{
+  colorlinks,
+  citecolor=green,
+  linkcolor=white, % Internal PDF Links
+  urlcolor=blue % External HREF links
+}
+
+% hardcode the DINRoundPro Font if needed.
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+\usefonttheme{serif} % default family is serif
+\usepackage{fontspec}
+%\setmainfont{MyriadPro-Regular}
+
+\newcommand{\WhiteExternalHref}[3][white]{\href{#2}{\color{#1}{#3}}}%
+
+\newcommand{\insertcompanyname}{\WhiteExternalHref{http://www.silpion.de/}{Silpion IT-Solutions}}
+
+\ifbeamer@secheader\else\setbeamertemplate{headline}[default]\fi
+
+\mode
+<all>
